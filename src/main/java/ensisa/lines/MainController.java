@@ -70,9 +70,11 @@ public class MainController {
     public ObjectProperty<Tool> currentToolProperty() {
         return currentTool;
     }
+
     public Tool getCurrentTool() {
         return currentTool.get();
     }
+
     public void setCurrentTool(Tool currentTool) {
         this.currentTool.set(currentTool);
     }
@@ -98,6 +100,7 @@ public class MainController {
             System.out.println(ex.getMessage());
         }
     }
+
     @FXML
     private void colorPickerAction() {
         var color = colorPicker.getValue();
@@ -110,6 +113,7 @@ public class MainController {
     private void undoMenuItemAction() {
         undoRedoHistory.undo();
     }
+
     @FXML
     private void redoMenuItemAction() {
         undoRedoHistory.redo();
@@ -218,10 +222,12 @@ public class MainController {
     private void mousePressedInEditor(MouseEvent event) {
         getCurrentTool().mousePressed(event);
     }
+
     @FXML
     private void mouseDraggedInEditor(MouseEvent event) {
         getCurrentTool().mouseDragged(event);
     }
+
     @FXML
     private void mouseReleasedInEditor(MouseEvent event) {
         getCurrentTool().mouseReleased(event);
@@ -235,10 +241,12 @@ public class MainController {
             clip.setHeight(newValue.getHeight());
         });
     }
+
     @FXML
     private void selectToolAction() {
         setCurrentTool(selectTool);
     }
+
     @FXML
     private void drawToolAction() {
         setCurrentTool(drawTool);
@@ -248,6 +256,7 @@ public class MainController {
     private void mouseEntered(MouseEvent event) {
         getCurrentTool().mouseEntered(event);
     }
+
     @FXML
     void mouseExited(MouseEvent event) {
         getCurrentTool().mouseExited(event);

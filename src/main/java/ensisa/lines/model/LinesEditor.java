@@ -14,6 +14,7 @@ public class LinesEditor {
     private final Map<StraightLine, Rectangle> startSelectionSquares;
     private final Map<StraightLine, Rectangle> endSelectionSquares;
     private final static int selectionSquareWidth = 6;
+
     public LinesEditor(Pane editorPane) {
         this.editorPane = editorPane;
         lines = new HashMap<>();
@@ -43,6 +44,7 @@ public class LinesEditor {
         endSelectionSquare.yProperty().bind(straightLine.endYProperty().
                 subtract(selectionSquareWidth / 2));
     }
+
     public void selectLine(StraightLine straightLine) {
         var startSelectionSquare = createSelectionSquare();
         var endSelectionSquare = createSelectionSquare();
@@ -52,6 +54,7 @@ public class LinesEditor {
         editorPane.getChildren().add(startSelectionSquare);
         editorPane.getChildren().add(endSelectionSquare);
     }
+
     public void deselectLine(StraightLine straightLine) {
         var selectionSquare = startSelectionSquares.get(straightLine);
         editorPane.getChildren().remove(selectionSquare);
@@ -109,6 +112,7 @@ public class LinesEditor {
         double b = dp / sn2;
         return squaredDistance(startX + b * sx, startY + b * sy, x, y);
     }
+
     /**
      * return the squared distance between two points
      */

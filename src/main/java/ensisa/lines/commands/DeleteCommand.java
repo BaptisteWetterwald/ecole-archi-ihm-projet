@@ -9,19 +9,22 @@ import java.util.List;
 import java.util.Set;
 
 public class DeleteCommand implements UndoableCommand {
-    private MainController mainController;
-    private List<StraightLine> savedLines;
-    private Set<StraightLine> savedSelectedLines;
+    private final MainController mainController;
+    private final List<StraightLine> savedLines;
+    private final Set<StraightLine> savedSelectedLines;
+
     public DeleteCommand(MainController mainController) {
         this.mainController = mainController;
         savedLines = new ArrayList<>(mainController.getDocument().getLines());
         savedSelectedLines = new HashSet<>(mainController.getSelectedLines());
     }
+
     @Override
     public void execute() {
         mainController.deselectAll();
         mainController.getDocument().getLines().removeAll(savedSelectedLines);
     }
+
     @Override
     public void undo() {
         mainController.deselectAll();
